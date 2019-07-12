@@ -1,0 +1,16 @@
+import sys
+import socket
+a = 1
+ms = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+address = socket.getaddrinfo(None,1221)
+print(address[3][4])
+ms.bind(address[3][4])
+ms.listen(5)
+conn,addr = ms.accept()
+data = conn.recv(1000)
+while (a == 1):
+    if not data:
+        break
+    else:
+        print("Got a Request")
+        a = 0
