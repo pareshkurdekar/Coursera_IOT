@@ -1,0 +1,15 @@
+import RP.GPIO as GPIO
+import time
+GPIO.setmode(GPIO.BOARD)
+
+GPIO.setup(13,GPIO.OUT)
+
+pwm_obj = GPIO.PWM(13,50)
+pwm_obj.start(0)
+while True:
+    for i in range(0,100,3):
+        pwm_obj.ChangeDutyCycle(i)
+        time.sleep(0.3)
+    for j in range(100,0,-3):
+        pwm_obj.ChangeDutyCycle(j)
+        time.sleep(0.1)
